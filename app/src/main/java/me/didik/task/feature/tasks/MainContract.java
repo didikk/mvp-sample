@@ -25,8 +25,6 @@ public interface MainContract {
     interface UserActionListener {
         void addNewTask();
 
-        void saveTask(String newTask);
-
         void loadTask();
 
         void openTaskDetail(@NonNull Task task);

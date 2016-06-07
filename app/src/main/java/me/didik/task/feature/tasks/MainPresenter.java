@@ -21,15 +21,9 @@ public class MainPresenter implements MainContract.UserActionListener {
         mRepository = new TaskRepository();
     }
 
-
     @Override
     public void addNewTask() {
         mView.showAddTask();
-    }
-
-    @Override
-    public void saveTask(String newTask) {
-
     }
 
     @Override

@@ -30,12 +30,15 @@ public class AddTaskActivity extends BaseActivity implements AddTaskContract.Vie
         mActionListener = new AddTaskPresenter(this);
     }
 
-    @OnClick(R.id.fab)
+    @OnClick(R.id.fab_save_task)
     public void onClick(View view) {
         String title = etTitle.getText().toString();
         String desc = etDesc.getText().toString();
-        Task task = new Task(title, new Date(), desc);
-        mActionListener.saveTask(task);
+        if (title.isEmpty() || desc.isEmpty()) toast("Please fill the title or description");
+        else {
+            Task task = new Task(title, new Date(), desc);
+            mActionListener.saveTask(task);
+        }
     }
 
     @Override

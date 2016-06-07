@@ -3,7 +3,6 @@ package me.didik.task.feature.tasks;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,7 +27,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     @BindView(R.id.null_task) LinearLayout mNoTaskView;
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
-    @BindView(R.id.fab) FloatingActionButton fab;
 
     private TaskAdapter mAdapter;
     private MainContract.UserActionListener mActionListener;
@@ -43,7 +41,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         mActionListener = new MainPresenter(this);
 
         initRecycler();
-        //mActionListener.loadTask();
     }
 
     @Override
@@ -55,9 +52,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_ADD_TASK && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_ADD_TASK && resultCode == Activity.RESULT_OK)
             toast(getString(R.string.message_success_add_task));
-        }
     }
 
     private void initRecycler() {
@@ -110,7 +106,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         recyclerView.setVisibility(View.GONE);
     }
 
-    @OnClick(R.id.fab)
+    @OnClick(R.id.fab_new_task)
     public void onClick(View view) {
         mActionListener.addNewTask();
     }
